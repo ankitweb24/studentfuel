@@ -1,0 +1,14 @@
+{
+  "name": "studentmanagmentapp",
+  "version": "1.0.0",
+  "description": "Fullstack student management app",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "install": "pnpm install --filter ./client... && pnpm install --filter ./server...",
+    "build": "cd client && pnpm run build",
+    "start": "pnpm --filter ./server... start"
+  },
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.1"
+}

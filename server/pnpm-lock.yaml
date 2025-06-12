@@ -26,6 +26,9 @@ importers:
       mongoose:
         specifier: ^8.15.1
         version: 8.15.1
+      path-to-regexp:
+        specifier: ^8.2.0
+        version: 8.2.0
 
 packages:
 

@@ -1,8 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
 import { configDotenv } from "dotenv";
-import cors from "cors";
 configDotenv();
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 
 import dbConnect from "./db/db.js";
 
@@ -13,10 +20,19 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+
 import studentRoutes from "./routes/studentRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+
+// Serve React static files
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 
 app.use("/api/students", studentRoutes);
